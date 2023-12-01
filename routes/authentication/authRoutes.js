@@ -5,5 +5,4 @@ const AUTH = express.Router();
 
 AUTH.route("/").post(login);
 AUTH.route("/logout").post(logout);
-
 export default AUTH;

@@ -1,22 +1,21 @@
 import Joi from "joi";
 
 const linkPatterns = {
-    GitHub: /^(https?:\/\/(www\.)?github\.com\/[a-zA-Z0-9_-]+)\/?$/,
-    Twitter: /^(https?:\/\/(www\.)?twitter\.com\/[a-zA-Z0-9_-]+)\/?$/,
-    LinkedIn: /^(https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+)\/?$/,
-    YouTube: /^(https?:\/\/(www\.)?youtube\.com\/[a-zA-Z0-9_-]+)\/?$/,
-    Facebook: /^(https?:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9_-]+)\/?$/,
-    Twitch: /^(https?:\/\/(www\.)?twitch\.tv\/[a-zA-Z0-9_-]+)\/?$/,
-    DevTo: /^(https?:\/\/(www\.)?dev\.to\/[a-zA-Z0-9_-]+)\/?$/,
-    CodeWars: /^(https?:\/\/(www\.)?codewars\.com\/users\/[a-zA-Z0-9_-]+)\/?$/,
-    CodePen: /^(https?:\/\/(www\.)?codepen\.io\/[a-zA-Z0-9_-]+)\/?$/,
-    FreeCodeCamp: /^(https?:\/\/(www\.)?freecodecamp\.org\/[a-zA-Z0-9_-]+)\/?$/,
-    GitLab: /^(https?:\/\/(www\.)?gitlab\.com\/[a-zA-Z0-9_-]+)\/?$/,
-    Hashnode: /^(https?:\/\/(www\.)?hashnode\.com\/@([a-zA-Z0-9_-]+)\/?)$/,
-    StackOverflow:
-        /^(https?:\/\/(www\.)?stackoverflow\.com\/users\/[a-zA-Z0-9_-]+)\/?$/,
+    GitHub: /^(https?:\/\/(www\.)?github\.com\/\S+)\/?$/,
+    Twitter: /^(https?:\/\/(www\.)?twitter\.com\/\S+)\/?$/,
+    LinkedIn: /^(https?:\/\/(www\.)?linkedin\.com\/in\/\S+)\/?$/,
+    YouTube: /^(https?:\/\/(www\.)?youtube\.com\/\S+)\/?$/,
+    Facebook: /^(https?:\/\/(www\.)?facebook\.com\/\S+)\/?$/,
+    Twitch: /^(https?:\/\/(www\.)?twitch\.tv\/\S+)\/?$/,
+    DevTo: /^(https?:\/\/(www\.)?dev\.to\/\S+)\/?$/,
+    CodeWars: /^(https?:\/\/(www\.)?codewars\.com\/users\/\S+)\/?$/,
+    CodePen: /^(https?:\/\/(www\.)?codepen\.io\/\S+)\/?$/,
+    FreeCodeCamp: /^(https?:\/\/(www\.)?freecodecamp\.org\/\S+)\/?$/,
+    GitLab: /^(https?:\/\/(www\.)?gitlab\.com\/\S+)\/?$/,
+    Hashnode: /^(https?:\/\/(www\.)?hashnode\.com\/@\S+\/?)$/,
+    StackOverflow: /^(https?:\/\/(www\.)?stackoverflow\.com\/users\/\S+)\/?$/,
     FrontendMentor:
-        /^(https?:\/\/(www\.)?frontendmentor\.io\/profile\/[a-zA-Z0-9_-]+)\/?$/,
+        /^(https?:\/\/(www\.)?frontendmentor\.io\/profile\/\S+)\/?$/,
 };
 
 const linkValidationSchema = Joi.object({
@@ -25,6 +24,8 @@ const linkValidationSchema = Joi.object({
         text: Joi.string(),
         image: Joi.string(),
         placeholder: Joi.string(),
+        backgroundColor: Joi.string(),
+        color: Joi.string(),
     }).required(),
     link: Joi.string()
         .uri({ scheme: ["http", "https"] })
@@ -79,7 +80,6 @@ const linkValidationSchema = Joi.object({
             ],
         })
         .required(),
-    user: Joi.string(),
 });
 
 export default linkValidationSchema;

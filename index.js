@@ -9,8 +9,9 @@ import router from "./routes/router.js";
 
 const app = express();
 const PORT = process.env.PORT;
-app.use(cookieParser());
 app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 mongoose.connection.on("connected", () => {
@@ -21,7 +22,13 @@ mongoose.connection.on("error", (err) => {
     console.error("Error connecting to MongoDB:", err);
 });
 
-app.use("/", router);
+app.use(router);
+
+app.get("/", (req, res) => {
+    res.json({
+        message: "SERVER UP",
+    });
+});
 
 app.listen(PORT, () => {
     console.log(chalk.bgCyan(`Server Running on PORT ${PORT}...`));
