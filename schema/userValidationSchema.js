@@ -12,6 +12,10 @@ const userValidationSchema = Joi.object({
     email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
         .required(),
+    displayEmail: Joi.string().email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net"] },
+    }),
     password: Joi.string()
         .min(8)
         .max(64)

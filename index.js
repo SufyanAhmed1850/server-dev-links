@@ -6,11 +6,13 @@ import cors from "cors";
 import corsOptions from "./config/corsOptions.js";
 import mongoose from "./config/dbConnect.js";
 import router from "./routes/router.js";
+import credentials from "./middleware/credentials.js";
 
-const app = express();
 const PORT = process.env.PORT;
+const app = express();
+app.use(credentials);
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 

@@ -43,9 +43,6 @@ const linkSchema = new Schema(
     },
 );
 
-// Ensure that each user can only have a unique order
-linkSchema.index({ user: 1, order: 1 }, { unique: true });
-
 const Link = model("Link", linkSchema);
 
 export default Link;
