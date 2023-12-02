@@ -27,10 +27,12 @@ mongoose.connection.on("error", (err) => {
 app.use(router);
 
 app.get("/", (req, res) => {
-    res.json({
-        message: "SERVER UP",
-    });
-});
+res.setHeader("Access-Control-Allow-Origin", "*")
+res.setHeader("Access-Control-Allow-Credentials", "true");
+res.setHeader("Access-Control-Max-Age", "1800");
+res.setHeader("Access-Control-Allow-Headers", "content-type");
+res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+ });
 
 app.listen(PORT, () => {
     console.log(chalk.bgCyan(`Server Running on PORT ${PORT}...`));
