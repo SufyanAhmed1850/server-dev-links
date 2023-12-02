@@ -9,6 +9,11 @@ const userValidationSchema = Joi.object({
         .min(3)
         .max(30)
         .regex(/^[a-zA-Z]+$/),
+    userName: Joi.string()
+        .min(6)
+        .max(30)
+        .regex(/^[a-z0-9_@.-]+$/)
+        .required(),
     email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
         .required(),

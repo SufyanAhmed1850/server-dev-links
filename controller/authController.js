@@ -31,13 +31,9 @@ const login = async (req, res) => {
             });
         }
         foundUser.password = undefined;
-        const token = jwt.sign(
-            { user: foundUser },
-            process.env.JWT_SECRET,
-            {
-                expiresIn: "7d",
-            },
-        );
+        const token = jwt.sign({ user: foundUser }, process.env.JWT_SECRET, {
+            expiresIn: "7d",
+        });
         res.cookie("jwt", token, {
             // httpOnly: true,
             // secure: true,
@@ -62,4 +58,4 @@ const logout = (req, res) => {
     res.status(200).send({ status: 200, message: "Cookie cleared" });
 };
 
-export { login,  logout };
+export { login, logout };
