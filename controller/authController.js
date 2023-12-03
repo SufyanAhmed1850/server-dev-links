@@ -6,7 +6,6 @@ const login = async (req, res) => {
     try {
         console.log("Body", req.body);
         console.log("Header", req.headers);
-        console.log("Cookies", req.cookies);
         const { email, password } = req.body;
         if (!email || !password) {
             return res.status(400).json({
@@ -34,12 +33,6 @@ const login = async (req, res) => {
         const token = jwt.sign({ user: foundUser }, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
-        res.cookie("jwt", token, {
-            // httpOnly: true,
-            // secure: true,
-            // sameSite: "None",
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
         return res
             .status(200)
             .json({ message: "Success", token, user: foundUser });
@@ -52,7 +45,6 @@ const login = async (req, res) => {
 };
 
 const logout = (req, res) => {
-    const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(204);
     res.clearCookie("jwt");
     res.status(200).send({ status: 200, message: "Cookie cleared" });
