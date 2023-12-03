@@ -14,6 +14,7 @@ app.use(credentials);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));
 
 mongoose.connection.on("connected", () => {
