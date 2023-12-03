@@ -49,7 +49,7 @@ const linkValidationSchema = Joi.object({
                     then: Joi.string().regex(linkPatterns.Facebook),
                 },
                 { is: "Twitch", then: Joi.string().regex(linkPatterns.Twitch) },
-                { is: "Dev.to", then: Joi.string().regex(linkPatterns.DevTo) },
+                { is: "DevTo", then: Joi.string().regex(linkPatterns.DevTo) },
                 {
                     is: "CodeWars",
                     then: Joi.string().regex(linkPatterns.CodeWars),
@@ -59,7 +59,7 @@ const linkValidationSchema = Joi.object({
                     then: Joi.string().regex(linkPatterns.CodePen),
                 },
                 {
-                    is: "freeCodeCamp",
+                    is: "FreeCodeCamp",
                     then: Joi.string().regex(linkPatterns.FreeCodeCamp),
                 },
                 { is: "GitLab", then: Joi.string().regex(linkPatterns.GitLab) },
@@ -68,11 +68,11 @@ const linkValidationSchema = Joi.object({
                     then: Joi.string().regex(linkPatterns.Hashnode),
                 },
                 {
-                    is: "Stack Overflow",
+                    is: "StackOverflow",
                     then: Joi.string().regex(linkPatterns.StackOverflow),
                 },
                 {
-                    is: "Frontend Mentor",
+                    is: "FrontendMentor",
                     then: Joi.string().regex(linkPatterns.FrontendMentor),
                 },
                 // Add more cases for additional platforms
