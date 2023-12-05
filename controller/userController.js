@@ -5,7 +5,6 @@ import fs from "fs";
 import decodeJWT from "../utils/decode.js";
 
 const updateUserDetails = async (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://devvlinks.vercel.app');
     try {
         const { firstName, lastName, email } = req.body;
         const decodedToken = await decodeJWT(req, res);
