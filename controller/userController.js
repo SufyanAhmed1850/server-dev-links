@@ -27,6 +27,7 @@ const updateUserDetails = async (req, res) => {
 };
 
 const saveUserImg = async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://devvlinks.vercel.app');
     try {
         const decodedToken = await decodeJWT(req, res);
         const foundUser = await User.findById(decodedToken.user._id).exec();
