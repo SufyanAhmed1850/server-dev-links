@@ -10,6 +10,11 @@ const USER = express.Router();
 
 USER.get("/", getUserDetails);
 USER.post("/update-user", updateUserDetails);
-USER.post("/image", upload.single("file"), saveUserImg);
+
+// Use middleware to set CORS headers for the "/image" route
+USER.post("/image", (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://devvlinks.vercel.app');
+    next();
+}, upload.single("file"), saveUserImg);
 
 export default USER;
