@@ -4,9 +4,8 @@ import cloudinary from "../config/cloudinary.js";
 import fs from "fs";
 import decodeJWT from "../utils/decode.js";
 
-const updateUserDetails = async (req, res, next) => {
+const updateUserDetails = async (req, res) => {
     res.header('Access-Control-Allow-Origin', 'https://devvlinks.vercel.app');
-    next();
     try {
         const { firstName, lastName, email } = req.body;
         const decodedToken = await decodeJWT(req, res);
