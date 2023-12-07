@@ -1,5 +1,5 @@
 const corsOptions = {
-    origin: "https://devvlinks.vercel.app",
+    origin: ["http://localhost:5173", "https://devslinks.vercel.app"],
     credentials: true,
     optionsSuccessStatus: 200,
 };

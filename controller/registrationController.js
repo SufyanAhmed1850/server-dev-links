@@ -24,6 +24,7 @@ const registerUser = async (req, res) => {
             user: newUser,
         });
     } catch (error) {
+        console.log(error);
         res.status(400).send({
             statusCode: 400,
             message: error.message,

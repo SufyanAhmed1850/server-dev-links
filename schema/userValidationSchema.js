@@ -9,18 +9,19 @@ const userValidationSchema = Joi.object({
         .min(3)
         .max(30)
         .regex(/^[a-zA-Z]+$/),
+    email: Joi.string()
+        .regex(
+            /^[^\x00-\x1F\x7F\x80-\xFF\s()<>@,;:"\[\]|ç%&,]+@[a-zA-Z0-9.-]+\.(com|net|co|org)$/u,
+        )
+        .required(),
     userName: Joi.string()
         .min(6)
         .max(30)
         .regex(/^[a-z0-9_@.-]+$/)
         .required(),
-    email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
-        .required(),
-    displayEmail: Joi.string().email({
-        minDomainSegments: 2,
-        tlds: { allow: ["com", "net"] },
-    }),
+    displayEmail: Joi.string().regex(
+        /^[^\x00-\x1F\x7F\x80-\xFF\s()<>@,;:"\[\]|ç%&,]+@[a-zA-Z0-9.-]+\.(com|net|co|org)$/u,
+    ),
     password: Joi.string()
         .min(8)
         .max(64)
