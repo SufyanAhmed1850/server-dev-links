@@ -7,7 +7,6 @@ const checkTokenValidation = async (req, res, next) => {
         const authorization = req.headers["authorization"];
         const token = authorization.split(" ")[1];
         const noUser = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(authorization);
         if (!authorization) {
             res.clearCookie("jwt");
             return res.status(401).json({

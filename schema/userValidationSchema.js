@@ -25,9 +25,7 @@ const userValidationSchema = Joi.object({
     password: Joi.string()
         .min(8)
         .max(64)
-        .pattern(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-        )
+        .pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
         .required(),
     repeatPassword: Joi.ref("password"),
     profile: Joi.string().allow(null).default(null),

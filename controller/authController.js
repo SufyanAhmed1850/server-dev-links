@@ -40,7 +40,11 @@ const login = async (req, res) => {
         console.error(e);
         return res
             .status(500)
-            .json({ message: "Server error while Loging in." });
+            .json({
+                code: 500,
+                message: "Server error while Loging in.",
+                status: false,
+            });
     }
 };
 
