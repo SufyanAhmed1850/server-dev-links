@@ -6,12 +6,12 @@ import decodeJWT from "../utils/decode.js";
 
 const updateUserDetails = async (req, res) => {
     try {
-        const { firstName, lastName, email } = req.body;
+        const { firstName, lastName, displayEmail } = req.body;
         const decodedToken = await decodeJWT(req, res);
         const foundUser = await User.findById(decodedToken.user._id).exec();
         foundUser.firstName = firstName;
         foundUser.lastName = lastName;
-        foundUser.displayEmail = email;
+        foundUser.displayEmail = displayEmail;
         await foundUser.save();
         return res.status(200).json({
             code: 200,

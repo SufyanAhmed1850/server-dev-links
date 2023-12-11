@@ -32,7 +32,6 @@ const linkPatterns = {
     Fiverr: /^((https?:\/\/)?www\.fiverr\.com\/\S+)\/?$/,
     Upwork: /^((https?:\/\/)?www\.upwork\.com\/freelancer\/\S+)\/?$/,
     Medium: /^((https?:\/\/)?medium\.com\/@\S+)\/?$/,
-    Skype: /^((https?:\/\/)?join\.skype\.com\/invite\/\S+)\/?$/,
 };
 
 const linkValidationSchema = Joi.object({
@@ -76,7 +75,6 @@ const linkValidationSchema = Joi.object({
                 { is: "Fiverr", then: Joi.string().regex(linkPatterns.Fiverr) },
                 { is: "Upwork", then: Joi.string().regex(linkPatterns.Upwork) },
                 { is: "Medium", then: Joi.string().regex(linkPatterns.Medium) },
-                { is: "Skype", then: Joi.string().regex(linkPatterns.Skype) },
                 { is: Joi.string(), then: Joi.forbidden() },
             ],
         })
